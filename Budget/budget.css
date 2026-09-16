@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Budget Page Stylesheet
-   Editorial warm parchment styling with category progress gauges
-   ========================================================================== */
-
 :root {
     --bg-color: #f7f4ec;
     --text-primary: #1e2c22;
@@ -47,7 +42,7 @@ body {
     max-width: 940px;
 }
 
-/* Header */
+
 .budget-header {
     display: flex;
     justify-content: space-between;
@@ -113,7 +108,7 @@ body {
 .expense-val { color: var(--expense-color); }
 .rate-val { color: var(--text-primary); }
 
-/* Section Title Row */
+
 .section-title-row {
     display: flex;
     justify-content: space-between;
@@ -157,7 +152,7 @@ body {
     background-color: var(--brand-dark-hover);
 }
 
-/* Form Drawer */
+
 .form-drawer {
     margin-bottom: 28px;
 }
@@ -226,7 +221,7 @@ body {
     outline: none;
 }
 
-/* Categories List */
+
 .categories-list {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     function renderBudgetUI() {
-        // Calculate spent per category for September 2026
+       
         const spentMap = {};
         Object.keys(budgets).forEach(c => spentMap[c] = 0);
 
@@ -65,13 +65,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const remaining = Math.max(0, totalBudget - totalSpent);
         const usageRate = totalBudget > 0 ? Math.round((totalSpent / totalBudget) * 100) : 0;
 
-        // Header displays
+    
         document.getElementById('total-budget-amount').innerText = formatRupee(totalBudget);
         document.getElementById('budget-total-spent').innerText = formatRupee(totalSpent);
         document.getElementById('budget-remaining').innerText = formatRupee(remaining);
         document.getElementById('budget-usage-rate').innerText = `${usageRate}%`;
 
-        // Render Category Cards
+      
         container.innerHTML = '';
         Object.entries(budgets).forEach(([category, limit]) => {
             const spent = spentMap[category] || 0;
