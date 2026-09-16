@@ -1,0 +1,549 @@
+/* ==========================================================================
+   Editorial Financial Ledger Stylesheet
+   Crafted to match high-end print typography and bespoke ledger design
+   ========================================================================== */
+
+:root {
+    /* Palette sampled directly from reference design */
+    --bg-color: #f7f4ec;
+    --text-primary: #1e2c22;
+    --text-muted: #7b857a;
+    --text-faint: #99a298;
+    
+    --brand-dark: #193628;
+    --brand-dark-hover: #10241a;
+    
+    --badge-bg: #eae5d7;
+    --badge-text: #69746a;
+    
+    --income-color: #356947;
+    --expense-color: #b3463a;
+    
+    --line-strong: #334436;
+    --line-subtle: #ded8c8;
+    --line-faint: #ece7d9;
+    
+    /* Typography */
+    --font-editorial: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-editorial);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 48px 24px 80px;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 940px;
+}
+
+/* --------------------------------------------------------------------------
+   Top Summary Section
+   -------------------------------------------------------------------------- */
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    gap: 32px;
+}
+
+.net-balance-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.eyebrow-label {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+}
+
+.balance-display {
+    font-family: var(--font-editorial);
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.as-of-label {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.stats-section {
+    display: flex;
+    align-items: flex-end;
+    gap: 36px;
+    padding-bottom: 4px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-label {
+    font-family: var(--font-ui);
+    font-size: 0.80rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    white-space: nowrap;
+}
+
+.stat-value {
+    font-family: var(--font-editorial);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.income-val {
+    color: var(--income-color);
+}
+
+.expense-val {
+    color: var(--expense-color);
+}
+
+.rate-val {
+    color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Transactions Section Header
+   -------------------------------------------------------------------------- */
+.transactions-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.title-group .section-title {
+    font-family: var(--font-editorial);
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.title-group .section-subtitle {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.primary-btn {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.primary-btn:hover {
+    background-color: var(--brand-dark-hover);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+/* --------------------------------------------------------------------------
+   Form Drawer / Modal
+   -------------------------------------------------------------------------- */
+.form-drawer {
+    margin-bottom: 28px;
+    transition: all 0.3s ease;
+}
+
+.form-drawer.hidden {
+    display: none;
+}
+
+.form-drawer-inner {
+    background-color: #f1ede1;
+    border: 1px solid var(--line-subtle);
+    border-radius: 10px;
+    padding: 22px 26px;
+}
+
+.form-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-drawer-header h3 {
+    font-family: var(--font-editorial);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+}
+
+.close-btn:hover {
+    color: var(--text-primary);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.form-row-bottom {
+    align-items: flex-end;
+    margin-bottom: 0;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 140px;
+}
+
+.input-field-grow {
+    flex: 3;
+    min-width: 240px;
+}
+
+.input-field label {
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.input-field input,
+.input-field select {
+    font-family: var(--font-editorial);
+    font-size: 0.92rem;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    border: 1px solid var(--line-subtle);
+    border-radius: 6px;
+    padding: 8px 12px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.input-field input:focus,
+.input-field select:focus {
+    border-color: var(--brand-dark);
+}
+
+.form-actions {
+    display: flex;
+    align-items: flex-end;
+}
+
+/* --------------------------------------------------------------------------
+   Filter Controls Bar
+   -------------------------------------------------------------------------- */
+.filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 14px;
+}
+
+.search-wrap {
+    flex: 0 1 240px;
+}
+
+.search-wrap input {
+    width: 100%;
+    font-family: var(--font-editorial);
+    font-size: 0.92rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    color: var(--text-primary);
+    padding: 4px 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-wrap input::placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.search-wrap input:focus {
+    border-bottom: 1px solid var(--text-muted);
+}
+
+.dropdown-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.filter-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: none;
+    font-family: var(--font-editorial);
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    padding: 4px 20px 4px 0;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.15s ease;
+}
+
+.filter-dropdown:hover,
+.filter-dropdown:focus {
+    color: var(--text-primary);
+}
+
+.dropdown-caret {
+    position: absolute;
+    right: 2px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Ledger Table
+   -------------------------------------------------------------------------- */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+#transactions-table thead th {
+    font-family: var(--font-editorial);
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    padding: 12px 0 12px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid var(--line-strong);
+}
+
+#transactions-table tbody td {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-subtle);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+#transactions-table tbody tr:last-child td {
+    border-bottom: 1px solid var(--line-subtle);
+}
+
+/* Column Widths & Alignments */
+.col-date {
+    width: 14%;
+    color: var(--text-muted) !important;
+    font-variant-numeric: tabular-nums;
+}
+
+.col-desc {
+    width: 44%;
+    color: var(--text-primary);
+}
+
+.col-category {
+    width: 18%;
+    text-align: center;
+}
+
+.col-amount {
+    width: 18%;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
+.col-action {
+    width: 6%;
+    text-align: right;
+}
+
+/* Category Pill Badges */
+.category-badge {
+    display: inline-block;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    font-family: var(--font-editorial);
+    font-size: 0.82rem;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+/* Text Colors for Income & Expense */
+.income-text {
+    color: var(--income-color);
+}
+
+.expense-text {
+    color: var(--expense-color);
+}
+
+/* Delete Row Cross Action */
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-faint);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.delete-btn:hover {
+    color: var(--expense-color);
+    background-color: #eee9dc;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 36px 0 !important;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    body {
+        padding: 32px 16px 60px;
+    }
+
+    .summary-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 36px;
+    }
+
+    .stats-section {
+        width: 100%;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .balance-display {
+        font-size: 2.75rem;
+    }
+
+    .filters-bar {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .search-wrap {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 14px 48px;
+    }
+
+    .balance-display {
+        font-size: 2.35rem;
+    }
+
+    .stats-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-box:last-child {
+        grid-column: span 2;
+    }
+
+    .col-category {
+        display: none;
+    }
+
+    .col-date {
+        width: 22%;
+    }
+
+    .col-desc {
+        width: 48%;
+    }
+
+    .col-amount {
+        width: 24%;
+    }
+
+    .col-action {
+        width: 6%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
