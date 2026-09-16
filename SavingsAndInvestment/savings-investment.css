@@ -1,0 +1,431 @@
+/* ==========================================================================
+   Savings & Investments Stylesheet
+   Editorial warm parchment styling with asset allocation strip & ledger
+   ========================================================================== */
+
+:root {
+    --bg-color: #f7f4ec;
+    --text-primary: #1e2c22;
+    --text-muted: #7b857a;
+    --text-faint: #99a298;
+    
+    --brand-dark: #193628;
+    --brand-dark-hover: #10241a;
+    
+    --badge-bg: #eae5d7;
+    --badge-text: #69746a;
+    
+    --income-color: #356947;
+    --expense-color: #b3463a;
+    
+    --line-strong: #334436;
+    --line-subtle: #ded8c8;
+    --card-bg: #f2eee3;
+    
+    --font-editorial: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-editorial);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 48px 24px 80px;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 940px;
+}
+
+/* Header */
+.portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 44px;
+    gap: 32px;
+}
+
+.eyebrow-label {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.balance-display {
+    font-family: var(--font-editorial);
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.as-of-label {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.stats-section {
+    display: flex;
+    gap: 36px;
+    align-items: flex-end;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-family: var(--font-ui);
+    font-size: 0.80rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    white-space: nowrap;
+}
+
+.stat-value {
+    font-family: var(--font-editorial);
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.income-val { color: var(--income-color); }
+.expense-val { color: var(--expense-color); }
+.rate-val { color: var(--text-primary); }
+
+/* Allocation Strip */
+.allocation-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--line-subtle);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+}
+
+.allocation-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-family: var(--font-editorial);
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.allocation-summary {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.allocation-track {
+    display: flex;
+    height: 14px;
+    border-radius: 999px;
+    overflow: hidden;
+    background-color: #ded8c8;
+    margin-bottom: 14px;
+}
+
+.allocation-seg {
+    height: 100%;
+    transition: width 0.4s ease;
+}
+
+.seg-mf { background-color: #2b593f; }
+.seg-eq { background-color: #4b8063; }
+.seg-fd { background-color: #ba8c53; }
+.seg-gold { background-color: #d1b46a; }
+.seg-ef { background-color: #557571; }
+
+.allocation-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Section Title Row */
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.section-subtitle {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.primary-btn {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+    white-space: nowrap;
+}
+
+.primary-btn:hover {
+    background-color: var(--brand-dark-hover);
+}
+
+/* Form Drawer */
+.form-drawer {
+    margin-bottom: 28px;
+}
+
+.form-drawer.hidden {
+    display: none;
+}
+
+.form-drawer-inner {
+    background-color: #f1ede1;
+    border: 1px solid var(--line-subtle);
+    border-radius: 10px;
+    padding: 22px 26px;
+}
+
+.form-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-drawer-header h3 {
+    font-family: var(--font-editorial);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 140px;
+}
+
+.input-field label {
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.input-field input,
+.input-field select {
+    font-family: var(--font-editorial);
+    font-size: 0.92rem;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    border: 1px solid var(--line-subtle);
+    border-radius: 6px;
+    padding: 8px 12px;
+    outline: none;
+}
+
+/* Holdings Table */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#holdings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+#holdings-table thead th {
+    font-family: var(--font-editorial);
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-strong);
+}
+
+#holdings-table tbody td {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-subtle);
+    vertical-align: middle;
+}
+
+.col-name { width: 30%; font-weight: 500; }
+.col-class { width: 20%; }
+.col-invested { width: 16%; text-align: right; color: var(--text-muted); }
+.col-current { width: 16%; text-align: right; font-weight: 600; }
+.col-return { width: 14%; text-align: right; font-weight: 500; }
+.col-action { width: 4%; text-align: right; }
+
+.category-badge {
+    display: inline-block;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    font-family: var(--font-editorial);
+    font-size: 0.80rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-faint);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.delete-btn:hover {
+    color: var(--expense-color);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 28px 16px 60px;
+    }
+
+    .portfolio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 28px;
+    }
+
+    .balance-display {
+        font-size: 2.75rem;
+    }
+
+    .stats-section {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .section-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .allocation-legend {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 20px 14px 48px;
+    }
+
+    .balance-display {
+        font-size: 2.35rem;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-box:last-child {
+        grid-column: span 2;
+    }
+
+    .col-class, .col-invested {
+        display: none;
+    }
+
+    .col-name {
+        width: 48%;
+    }
+
+    .col-current {
+        width: 26%;
+    }
+
+    .col-return {
+        width: 20%;
+    }
+
+    .col-action {
+        width: 6%;
+    }
+}

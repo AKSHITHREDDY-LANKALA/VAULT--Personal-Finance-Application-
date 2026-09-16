@@ -1,0 +1,410 @@
+/* ==========================================================================
+   Home Dashboard Stylesheet
+   Warm parchment editorial aesthetic with harmonious layout
+   ========================================================================== */
+
+:root {
+    --bg-color: #f7f4ec;
+    --text-primary: #1e2c22;
+    --text-muted: #7b857a;
+    --text-faint: #99a298;
+    
+    --brand-dark: #193628;
+    --brand-dark-hover: #10241a;
+    
+    --badge-bg: #eae5d7;
+    --badge-text: #69746a;
+    
+    --income-color: #356947;
+    --expense-color: #b3463a;
+    
+    --line-strong: #334436;
+    --line-subtle: #ded8c8;
+    --card-bg: #f2eee3;
+    
+    --font-editorial: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-editorial);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 48px 24px 80px;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 940px;
+}
+
+/* Header */
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    gap: 32px;
+}
+
+.eyebrow-label {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.balance-display {
+    font-family: var(--font-editorial);
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.as-of-label {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.metrics-grid {
+    display: flex;
+    gap: 28px;
+    align-items: flex-end;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    white-space: nowrap;
+}
+
+.metric-value {
+    font-family: var(--font-editorial);
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.income-val { color: var(--income-color); }
+.expense-val { color: var(--expense-color); }
+.rate-val { color: var(--text-primary); }
+
+/* Cash Flow Bar */
+.cashflow-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--line-subtle);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+}
+
+.section-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-heading {
+    font-family: var(--font-editorial);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.section-subtext {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.subtle-note {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.flow-progress-track {
+    display: flex;
+    height: 12px;
+    border-radius: 999px;
+    overflow: hidden;
+    background-color: #ded8c8;
+    margin-bottom: 14px;
+}
+
+.flow-bar-spent {
+    background-color: var(--expense-color);
+    transition: width 0.4s ease;
+}
+
+.flow-bar-saved {
+    background-color: var(--income-color);
+    transition: width 0.4s ease;
+}
+
+.flow-legend {
+    display: flex;
+    gap: 24px;
+    font-family: var(--font-ui);
+    font-size: 0.80rem;
+    color: var(--text-muted);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-expense { background-color: var(--expense-color); }
+.dot-savings { background-color: var(--income-color); }
+
+/* Home Grid */
+.home-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 36px;
+    align-items: start;
+}
+
+/* Recent Transactions Preview */
+.recent-transactions-card {
+    border-top: 1px solid var(--line-strong);
+    padding-top: 16px;
+}
+
+.view-all-link {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--brand-dark);
+    text-decoration: none;
+    transition: opacity 0.18s ease;
+}
+
+.view-all-link:hover {
+    text-decoration: underline;
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin-top: 8px;
+}
+
+.preview-table td {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-subtle);
+    vertical-align: middle;
+}
+
+.preview-date {
+    width: 22%;
+    color: var(--text-muted);
+}
+
+.preview-desc {
+    width: 50%;
+    color: var(--text-primary);
+}
+
+.preview-amount {
+    width: 28%;
+    text-align: right;
+    font-weight: 500;
+}
+
+/* Portals */
+.portals-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.portal-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--line-subtle);
+    border-radius: 10px;
+    padding: 22px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.portal-card:hover {
+    border-color: #c9c1ae;
+    transform: translateY(-2px);
+}
+
+.portal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.portal-tag {
+    font-family: var(--font-ui);
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.portal-arrow {
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    color: var(--brand-dark);
+    text-decoration: none;
+}
+
+.portal-title {
+    font-family: var(--font-editorial);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.portal-desc {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.portal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--line-subtle);
+    padding-top: 12px;
+}
+
+.portal-stat {
+    font-family: var(--font-ui);
+    font-size: 0.80rem;
+    color: var(--text-muted);
+}
+
+.badge-status {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    font-family: var(--font-ui);
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.badge-growth {
+    color: var(--income-color);
+    background-color: #e5ede7;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    body {
+        padding: 28px 16px 60px;
+    }
+
+    .home-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        margin-bottom: 28px;
+    }
+
+    .balance-display {
+        font-size: 2.75rem;
+    }
+
+    .metrics-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 20px 14px 48px;
+    }
+
+    .balance-display {
+        font-size: 2.35rem;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .metric-card:last-child {
+        grid-column: span 2;
+    }
+
+    .cashflow-section {
+        padding: 18px;
+        margin-bottom: 28px;
+    }
+
+    .flow-legend {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .preview-desc {
+        width: 45%;
+    }
+
+    .preview-date {
+        width: 25%;
+    }
+
+    .preview-amount {
+        width: 30%;
+    }
+}

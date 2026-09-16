@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Shared Navigation Stylesheet
+   Personal Finance Application - Unified Editorial Navigation
+   ========================================================================== */
+
+.app-navbar {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto 36px;
+    padding: 0 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ded8c8;
+    background-color: transparent;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #1e2c22;
+}
+
+.nav-brand-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #1e2c22;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #788278;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: color 0.18s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    color: #193628;
+}
+
+.nav-link.active {
+    color: #193628;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -19px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #193628;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .app-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+    }
+
+    .nav-brand-title {
+        font-size: 1.25rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 18px;
+        padding-bottom: 6px;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 0.82rem;
+        white-space: nowrap;
+        padding: 6px 2px;
+    }
+
+    .nav-link.active::after {
+        bottom: -7px;
+    }
+}

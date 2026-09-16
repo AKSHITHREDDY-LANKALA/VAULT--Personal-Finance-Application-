@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings & Investments - Personal Finance</title>
+    <!-- Google Fonts: Newsreader & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/nav.css">
+    <link rel="stylesheet" href="savings-investment.css">
+</head>
+<body>
+
+    <main class="dashboard-container">
+        <!-- Shared Navigation Bar -->
+        <nav class="app-navbar">
+            <a href="../Home/home.html" class="nav-brand">
+                <span class="nav-brand-title">Personal Finance</span>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="../Home/home.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../Transaction/transaction.html" class="nav-link">Transactions</a></li>
+                <li class="nav-item"><a href="../Budget/budget.html" class="nav-link">Budget</a></li>
+                <li class="nav-item"><a href="../SavingsAndInvestment/savings-investment.html" class="nav-link active">Savings & Investments</a></li>
+            </ul>
+        </nav>
+
+        <!-- Summary Header -->
+        <header class="portfolio-header">
+            <div class="portfolio-title-section">
+                <span class="eyebrow-label">Portfolio Valuation</span>
+                <h1 id="total-portfolio-val" class="balance-display">₹2,45,000.00</h1>
+                <span class="as-of-label">Combined investments & emergency reserves</span>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <span class="stat-label">Total Gain</span>
+                    <span id="total-gain-val" class="stat-value income-val">+₹34,200.00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Overall Return</span>
+                    <span id="total-gain-pct" class="stat-value income-val">+16.2%</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Emergency Fund</span>
+                    <span id="emergency-fund-val" class="stat-value rate-val">₹85,000.00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Asset Allocation Strip -->
+        <section class="allocation-section">
+            <div class="allocation-header-row">
+                <h2 class="section-title">Asset Allocation</h2>
+                <span class="allocation-summary" id="allocation-stats">4 Asset Classes</span>
+            </div>
+            <div class="allocation-track" id="allocation-track">
+                <!-- Dynamically sized allocation segments -->
+            </div>
+            <div class="allocation-legend" id="allocation-legend">
+                <!-- Legend items -->
+            </div>
+        </section>
+
+        <!-- Holdings Table Section -->
+        <section class="holdings-section">
+            <div class="section-title-row">
+                <div class="title-group">
+                    <h2 class="section-title">Holdings & Assets</h2>
+                    <p class="section-subtitle">Real-time asset tracking with purchase and current valuation</p>
+                </div>
+                <button id="add-asset-btn" class="primary-btn" type="button">+ Add Holding</button>
+            </div>
+
+            <!-- Drawer: Add Asset Form -->
+            <section id="asset-form-section" class="form-drawer hidden">
+                <div class="form-drawer-inner">
+                    <div class="form-drawer-header">
+                        <h3>Add New Asset / Holding</h3>
+                        <button type="button" id="close-asset-form-btn" class="close-btn">✕</button>
+                    </div>
+                    <form id="add-asset-form">
+                        <div class="form-row">
+                            <div class="input-field">
+                                <label for="asset-name">Asset Name</label>
+                                <input type="text" id="asset-name" placeholder="e.g. Nifty 50 Index Fund" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="asset-class">Asset Class</label>
+                                <select id="asset-class" required>
+                                    <option value="Mutual Funds">Mutual Funds</option>
+                                    <option value="Equities / Stocks">Equities / Stocks</option>
+                                    <option value="Fixed Deposit">Fixed Deposit</option>
+                                    <option value="Gold">Gold</option>
+                                    <option value="Emergency Fund">Emergency Fund</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <label for="asset-invested">Invested Amount (₹)</label>
+                                <input type="number" id="asset-invested" placeholder="0.00" step="100" min="1" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="asset-current">Current Value (₹)</label>
+                                <input type="number" id="asset-current" placeholder="0.00" step="100" min="1" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="primary-btn">Save Asset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Table -->
+            <div class="table-container">
+                <table id="holdings-table">
+                    <thead>
+                        <tr>
+                            <th class="col-name">Asset</th>
+                            <th class="col-class">Class</th>
+                            <th class="col-invested">Invested</th>
+                            <th class="col-current">Current Value</th>
+                            <th class="col-return">Gain / Loss</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="holdings-tbody">
+                        <!-- Populated by savings-investment.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="../shared/nav.js"></script>
+    <script src="../shared/api.js"></script>
+    <script src="savings-investment.js"></script>
+</body>
+</html>

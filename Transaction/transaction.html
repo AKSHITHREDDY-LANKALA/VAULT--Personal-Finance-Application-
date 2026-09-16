@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - Personal Finance</title>
+    <!-- Google Fonts: Newsreader for the editorial financial aesthetic and Inter for UI accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/nav.css">
+    <link rel="stylesheet" href="transaction.css">
+</head>
+<body>
+
+    <main class="dashboard-container">
+        <!-- Shared Navigation Bar -->
+        <nav class="app-navbar">
+            <a href="../Home/home.html" class="nav-brand">
+                <span class="nav-brand-title">Personal Finance</span>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="../Home/home.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../Transaction/transaction.html" class="nav-link active">Transactions</a></li>
+                <li class="nav-item"><a href="../Budget/budget.html" class="nav-link">Budget</a></li>
+                <li class="nav-item"><a href="../SavingsAndInvestment/savings-investment.html" class="nav-link">Savings & Investments</a></li>
+            </ul>
+        </nav>
+        <header class="summary-header">
+            <div class="net-balance-section">
+                <span class="eyebrow-label">Net balance</span>
+                <h1 id="current-balance" class="balance-display">₹5,783.85</h1>
+                <span id="date-label" class="as-of-label">As of September 13, 2026</span>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <span class="stat-label">Income, this month</span>
+                    <span id="total-income" class="stat-value income-val">₹3,650.00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Expenses, this month</span>
+                    <span id="total-expenses" class="stat-value expense-val">₹1,329.45</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Savings rate</span>
+                    <span id="savings-rate" class="stat-value rate-val">64%</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Transactions Section Header -->
+        <section class="transactions-header-row">
+            <div class="title-group">
+                <h2 class="section-title">Transactions</h2>
+                <p class="section-subtitle">Every entry, editable and searchable</p>
+            </div>
+            <button id="add-entry-btn" class="primary-btn" type="button">+ Add entry</button>
+        </section>
+
+        <!-- Hidden Add Transaction Drawer / Form -->
+        <section id="transaction-form-section" class="form-drawer hidden">
+            <div class="form-drawer-inner">
+                <div class="form-drawer-header">
+                    <h3>New Transaction</h3>
+                    <button type="button" id="close-form-btn" class="close-btn" aria-label="Close form">✕</button>
+                </div>
+                <form id="add-transaction-form">
+                    <div class="form-row">
+                        <div class="input-field">
+                            <label for="form-type">Type</label>
+                            <select id="form-type" required>
+                                <option value="expense" selected>Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label for="form-amount">Amount (₹)</label>
+                            <input type="number" id="form-amount" placeholder="0.00" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="input-field">
+                            <label for="form-category">Category</label>
+                            <select id="form-category" required>
+                                <option value="Food">Food</option>
+                                <option value="Income">Income</option>
+                                <option value="Housing">Housing</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Health">Health</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Savings">Savings</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label for="form-date">Date</label>
+                            <input type="date" id="form-date" required>
+                        </div>
+                    </div>
+                    <div class="form-row form-row-bottom">
+                        <div class="input-field input-field-grow">
+                            <label for="form-description">Description</label>
+                            <input type="text" id="form-description" placeholder="e.g. Star Bazaar groceries" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="primary-btn">Save entry</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Filter Controls Bar -->
+        <section class="filters-bar">
+            <div class="search-wrap">
+                <input type="text" id="search-input" placeholder="Search description..." autocomplete="off">
+            </div>
+
+            <div class="dropdown-wrap">
+                <select id="filter-category" class="filter-dropdown">
+                    <option value="all">All categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Income">Income</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Health">Health</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Savings">Savings</option>
+                </select>
+                <span class="dropdown-caret">▾</span>
+            </div>
+
+            <div class="dropdown-wrap">
+                <select id="filter-type" class="filter-dropdown">
+                    <option value="all">All types</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+                <span class="dropdown-caret">▾</span>
+            </div>
+        </section>
+
+        <!-- Transactions Ledger Table -->
+        <section class="table-container">
+            <table id="transactions-table">
+                <thead>
+                    <tr>
+                        <th class="col-date">Date</th>
+                        <th class="col-desc">Description</th>
+                        <th class="col-category">Category</th>
+                        <th class="col-amount">Amount</th>
+                        <th class="col-action"></th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-tbody">
+                    <!-- Dynamic Rows populated by transaction.js -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="../shared/nav.js"></script>
+    <script src="../shared/api.js"></script>
+    <script src="transaction.js"></script>
+</body>
+</html>
